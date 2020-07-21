@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const routes = require('./routes');
+// const routes = require('./routes');
 
 // set up PORT
 const PORT = process.env.PORT || 3001;
@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // run routes
-app.use(routes);
+// app.use(routes);
 
 // set up mongodb connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gallery',
