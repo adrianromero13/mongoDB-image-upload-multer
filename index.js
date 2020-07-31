@@ -1,34 +1,31 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const fileUpload = require('express-fileupload');
 
-// const routes = require('./routes');
-
-// set up PORT
-const PORT = process.env.PORT || 3001;
-
-// set up app
+// initialize express
 const app = express();
 
-// set up middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(fileUpload());
 
-// run build
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
-}
 
-// run routes
-// app.use(routes);
+// this would be in routes normally
+app.post('/upload', (req, res) => {
+  if(req.files === null) {
+    return res.status(400).json({ msg: 'No file found' });
 
-// set up mongodb connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gallery',
-{
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
+  }
+
+  // variable for file in req.files
+  const file = req.files.file;
+
+  file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
+    if(err) {
+      console.error(err);
+      return res.status(500).send(err);
+    }
+
+    // if no errors
+    res.json({ fileName: file.name, filePath: `/uploads${file.name}` });
+  });
 });
 
-// run app using port
-app.listen(PORT, console.log(`app running on PORT: ${PORT}`));
+app.listen(5000, () => console.log('Server started...'));

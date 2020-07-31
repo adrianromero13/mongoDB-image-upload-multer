@@ -27,7 +27,7 @@ class App extends Component {
           </label>
         </div>
       </div>
-      <button type='button' className='bt bt-primary'>
+      <button type='button' className='btn btn-primary'>
         Upload
       </button>
     </div>
