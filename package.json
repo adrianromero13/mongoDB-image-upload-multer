@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/adrianromero13/mongoDB-image-upload-multer#readme",
   "dependencies": {
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.9",

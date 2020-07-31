@@ -1,38 +1,21 @@
 import React, { Component } from 'react';
-import './App.css';
 
-class App extends Component {
-  render() {
+import FileUpload from './components/fileUpload';
+
+
+  const App = () => {
 
     return (
-      <div className='container'>
-      <div className='jumbotron'>
-        <h1 className='display-4'>Image Uploader</h1>
-        <p className='lead'>
-          A simple application to upload and retrieve images from a database
-        </p>
-        <hr className='my-4' />
-      </div>
-      <div className='input-group mb-3'>
-        <div className='custom-file'>
-          <input
-            type='file'
-            className='custom-file-input'
-            id='inputGroupFile01'
-            aria-describedby='inputGroupFileAddon01'
-            />
-          <label className='custom-file-label'
-            htmlFor='inputGroupFile01'>
-            Choose a file
-          </label>
-        </div>
-      </div>
-      <button type='button' className='btn btn-primary'>
-        Upload
-      </button>
-    </div>
+     <div className='container mt-4'>
+       <h4 className='display-4 text-center mb-4'>
+         <i className='fa fa-react'>
+         React File Upload
+         </i>
+       </h4>
+      <FileUpload />
+     </div>
   );
 }
-}
+
 
 export default App;
